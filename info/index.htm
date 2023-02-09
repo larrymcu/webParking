@@ -62,14 +62,14 @@
 		success: function(data, status) {
 			var userLang = navigator.language || navigator.userLanguage; 
 			if(userLang == "zh-CN"){
-				<!-- window.location.replace("https://scanelectech.com.tw" + window.location.pathname); -->
+				<!-- window.location.replace("https://cn.eca.party" + window.location.pathname); -->
 				document.getElementById("cdn").innerHTML=data.split("loc=")[1].split("\n")[0];
 				document.getElementById("ipn").innerHTML=data.split("ip=")[1].split("\n")[0];
 				document.getElementById("lan").innerHTML=userLang;
 				document.getElementById("dmn").innerHTML=window.location.hostname;
 				document.getElementById("dmn2").innerHTML=window.location.hostname;
 			}else if(data.split("loc=")[1].split("\n")[0] == "CN"){
-				<!-- window.location.replace("https://scanelectech.com.tw" + window.location.pathname); -->
+				<!-- window.location.replace("https://cn.eca.party" + window.location.pathname); -->
 				document.getElementById("cdn").innerHTML=data.split("loc=")[1].split("\n")[0];
 				document.getElementById("ipn").innerHTML=data.split("ip=")[1].split("\n")[0];
 				document.getElementById("lan").innerHTML=userLang;
