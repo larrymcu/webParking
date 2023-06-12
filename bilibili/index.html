@@ -19,7 +19,11 @@
 			display: none;
 		}
 
-		@media only screen and (max-width: 805px) {
+		@media only screen and (max-width: 843px) {
+			.iframe-desktop {
+				display: none;
+			}
+			
 			a {
 				text-decoration: none;
 			}
@@ -68,7 +72,11 @@
 			}
 		}
 
-		@media only screen and (min-width: 806px) {
+		@media only screen and (min-width: 844px) {
+			.iframe-mobile {
+				display: none;
+			}
+			
 			a {
 				text-decoration: none;
 			}
@@ -147,11 +155,9 @@
 		})();
 	</script>
 	<style>
-		/* 媒體查詢：當螢幕寬度小於等於 768 像素時，隱藏第一段、顯示第二段 */
-		@media screen and (max-width: 805px) {
-			.iframe-desktop {
-				display: none;
-			}
+		/* 媒體查詢：當螢幕寬度小於等於 661 像素時，隱藏第一段、顯示第二段 */
+		@media screen and (max-width: 660px) {
+			
 			.nav1 {
 				width: 100%;
 				height: 63px;
@@ -174,11 +180,9 @@
 			
 		}
 
-		/* 媒體查詢：當螢幕寬度大於 768 像素時，隱藏第二段、顯示第一段 */
-		@media screen and (min-width: 806px) {
-			.iframe-mobile,.nav1,.nav {
-				display: none;
-			}
+		/* 媒體查詢：當螢幕寬度大於 661 像素時，隱藏第二段、顯示第一段 */
+		@media screen and (min-width: 661px) {
+			
 			.nav1 {
 				width: 100%;
 				height: 63px;
