@@ -203,6 +203,32 @@
 				z-index: 9999;
 			}
 		}
+		
+		/* 媒體查詢：當螢幕寬度大於 844 像素時，針對bilibili畫面修正 */
+		@media screen and (min-width: 844px) {
+		
+			.nav1 {
+				width: 100%;
+				height: 80%;
+				background: #00000000;
+				display: flex;
+				position: fixed;
+				top: 0;
+				z-index: 9998;
+			}
+			
+			.nav {
+				width: 0%;
+				height: 63px;
+				background: #00000000;
+				display: flex;
+				position: fixed;
+				bottom: 0;
+				right:0;
+				z-index: 9999;
+			}
+		
+		}
 	</style>
 
 </head>
