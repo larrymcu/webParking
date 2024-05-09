@@ -244,14 +244,14 @@
 		</a></div>
 	<!-- 在電腦上顯示第一段 -->
 	<div class="iframe-desktop">
-		<iframe src="https://player.bilibili.com/player.html?aid=211622341&bvid=BV1Pa411C7iY&cid=508880575&page=1&autoplay=0"
+		<iframe id="desktopIframe" src=""
 			style="position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:0;" ></iframe>
 	</div>
 
 	<!-- 在手機或平板上顯示第二段 -->
 	<div class="iframe-mobile">
-		<iframe
-			src="https://www.youtube-nocookie.com/embed/6cVAcRAlv-I?rel=0&amp;mute=1&amp;autoplay=1&amp;loop=1&amp;color=white&amp;playlist=6cVAcRAlv-I&fs=0"
+		<iframe id="mobileIframe"
+			src=""
 			style="position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:0;"
 			allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="false" ></iframe>
 	</div>
@@ -261,7 +261,40 @@
 
 	<div class="nav"><a class="nav-item" href="#"><div class="label"></div></a></div>
 
+<script>
+  function getRegion() {
+    fetch('/cdn-cgi/trace')
+      .then(response => {
+        if (response.ok) {
+          return response.text();
+        } else {
+          const desktopIframe = document.getElementById('desktopIframe');
+          const mobileIframe = document.getElementById('mobileIframe');
+          desktopIframe.src = '/';
+          mobileIframe.src = '/';
+          throw new Error('Failed to fetch /cdn-cgi/trace');
+        }
+      })
+      .then(data => {
+        const locParam = data.match(/loc=(\w+)/)[1];
+        const desktopIframe = document.getElementById('desktopIframe');
+        const mobileIframe = document.getElementById('mobileIframe');
 
+        if (locParam === 'TW') {
+          desktopIframe.src = '/';
+          mobileIframe.src = '/';
+        } else {
+          desktopIframe.src = 'https://player.bilibili.com/player.html?aid=211622341&bvid=BV1Pa411C7iY&cid=508880575&page=1&autoplay=0';
+          mobileIframe.src = 'https://www.youtube-nocookie.com/embed/6cVAcRAlv-I?rel=0&amp;mute=1&amp;autoplay=1&amp;loop=1&amp;color=white&amp;playlist=6cVAcRAlv-I&fs=0';
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+
+  window.onload = getRegion;
+</script>
 
 </body>
 
